@@ -1,0 +1,59 @@
+{% extends 'TEMPO/band_base.html' %}
+{% block title %}
+    <title>Band Song Lists</title>
+{% endblock %}
+{% block band_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/band_live_session.css" %}">
+{% endblock %}
+{% block nav-item %}
+    <li class="nav-item first-item">
+        <a href="{% url 'my-band' %}">Band Profile</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'live-session' %}"><span>Live Sessions</span></a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'practice-session' %}">Practice Sessions</a>
+    </li>
+    <li class="nav-item active-item">
+        <a href="{% url 'song-list' %}">Song Lists</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'band-calendar' %}">Calendar</a>
+    </li>
+{% endblock %}
+{% block main %}
+    <div class="container" id="event-song-lists">
+        <div class="row">
+            <div class="col-md-10 offset-md-2">
+                <div class="title">
+                    <h3>Event &nbspSong &nbspLists</h3>
+                </div>
+                <div class="line"></div>
+                {% if not band_event %}
+                    <h2>There hasn't been any song list yet.</h2>
+                {% else %}
+                    <div class="list-cards">
+                        <ul>
+                            {% for event in band_event %}
+                                <li>
+                                    <div class="list-card" onclick="window.location.href='{% url 'songs' event.id %}'">
+                                        <div class="event-title">{{ event.name }}</div>
+                                        <div>
+                                            <img class="event-photo" src="{% url 'event-photo' event.id %}">
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    {% load static %}
+    <script src="{% static 'TEMPO/js/song_list.js' %}"></script>
+{% endblock %}

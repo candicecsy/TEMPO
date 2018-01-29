@@ -1,0 +1,33 @@
+body {
+    background: url("../images/create_band_background.jpg") fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.create-band-box h3{
+    margin-top: 40px;
+    margin-bottom: 60px;
+    margin-left: 100px;
+    color: #00CC99;
+}
+
+.create-band-box table {
+    margin-top: -50px;
+    margin-left: 10px;
+    border-collapse: separate;
+    border-spacing: 20px;
+}
+
+.create-band-box td {
+    padding-right: 20px;
+}
+
+.create-band-box button {
+    margin-left: 180px;
+}
+
+.create-band-box .error span {
+    color: red;
+}

@@ -1,0 +1,58 @@
+{% extends 'TEMPO/band_base.html' %}
+{% block title %}
+    <title>Create My Band</title>
+{% endblock %}
+{% block band_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/create_band.css" %}">
+{% endblock %}
+{% block nav-item-home %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}"><span class="my-nav-item">Home</span><span
+                class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item-profile %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'profile' %}"><span class="my-nav-active">Profile</span><span class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item-user-calendar %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'user-calendar' %}"><span class="my-nav-item">My Calendar</span><span class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item %}
+    <li class="nav-item first-item active-item">
+        My Profile
+    </li>
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-2 create-band-box">
+                <p>{{ error }}</p>
+                <form method="post" action="{% url 'create-band' %}" enctype="multipart/form-data">
+                    <h3>Create My Band</h3>
+                    <table>
+                        {% for field in form.visible_fields %}
+                            <tr>
+                                <td>{{ field.label_tag }}</td>
+                                <td>{{ field }}</td>
+                                <td class="error"><span>{{ field.errors }}</span></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% for field in form.hidden_fields %}
+                        {{ field }}
+                    {% endfor %}
+                    <br/>
+                    <button class="btn-lg btn-info" type="submit" value="Create">Create</button>
+                    <br/>
+                    {% csrf_token %}
+                </form>
+                <button class="btn-lg btn-danger" onclick="window.location.href='{% url 'profile' %}'">Cancel</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

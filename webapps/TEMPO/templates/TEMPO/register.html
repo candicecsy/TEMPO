@@ -1,0 +1,51 @@
+{% extends "TEMPO/base_generic.html" %}
+{% block title %}
+    <title>Sign up</title>
+{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/register.css" %}">
+{% endblock %}
+{% block body %}
+    <div class="container register-block">
+        <div class="row">
+            <div class="col-xs-7 col-sm-7 col-md-4 offset-md-7">
+                {% for error in form.non_field_errors %}
+                    <div class="errmessage">
+                        <p>{{ error }}</p>
+                    </div>
+                {% endfor %}
+                <form class="register-block" method="post">
+                    {% csrf_token %}
+                    <div class="form-control form-field">
+                        {{ form.username }}
+                    </div>
+                    <div>{{ form.username.errors }}</div>
+                    <div class="form-control form-field">
+                        {{ form.first_name }}
+                        <div>{{ form.first_name.errors }}</div>
+                    </div>
+                    <div class="form-control form-field">
+                        {{ form.last_name }}
+                        <div>{{ form.last_name.errors }}</div>
+                    </div>
+                    <div class="form-control form-field">
+                        {{ form.email_address }}
+                        <div>{{ form.email_address.errors }}</div>
+                    </div>
+                    <div class="form-control form-field">
+                        {{ form.password1 }}
+                        <div>{{ form.password1.errors }}</div>
+                    </div>
+                    <div class="form-control form-field">
+                        {{ form.password2 }}
+                        <div>{{ form.password2.errors }}</div>
+                    </div>
+
+                    <button class="btn btn-lg btn-info btn-block" type="submit"> Sign up</button>
+                </form>
+                <button class="btn btn-lg btn-danger btn-block" onclick="window.location.href='{% url 'home' %}'"> Cancel</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

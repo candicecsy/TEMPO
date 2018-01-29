@@ -1,0 +1,22 @@
+#vid-thumb video{
+    width: 700px;
+    height: 500px;
+}
+
+#vid-box video {
+    width: 300px;
+    height: 400px;
+    margin: 20px;
+}
+
+#logs {
+    overflow: scroll;
+    background: #626a73;
+    margin-top: 50px;
+    height: 250px;
+}
+
+#logs p {
+    color: antiquewhite;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}

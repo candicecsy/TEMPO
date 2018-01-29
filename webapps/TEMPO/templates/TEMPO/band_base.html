@@ -1,0 +1,49 @@
+{% extends 'TEMPO/base_index.html' %}
+{% block nav-item-home %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}"><span class="my-nav-item">Home</span><span
+                class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item-profile %}
+    <li>
+        <div class="dropdown">
+            <a href="#" class="nav-link dropdown-active dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                <span>Profile</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                {% if request.user.profile.band %}
+                    <a class="dropdown-item" href="{% url 'my-band' %}">My Band</a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+{% endblock %}
+{% block nav-item-user-calendar %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'user-calendar' %}"><span class="my-nav-item">My Calendar</span><span class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/base.css" %}">
+    <link rel="stylesheet" href="{% static "TEMPO/css/band_base.css" %}">
+    {% block band_css %}
+    {% endblock %}
+{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-dark sidebar">
+                <ul class="nav nav-pills flex-column">
+                    {% block nav-item %}
+                    {% endblock %}
+                </ul>
+            </nav>
+            {% block main %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

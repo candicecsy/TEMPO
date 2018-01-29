@@ -1,0 +1,29 @@
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 20px 0px 20px 0px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    border-right: 1px solid #eee;
+    text-align: center;
+}
+
+.sidebar .first-item {
+    margin-top: 220px;
+}
+
+.sidebar .nav-item {
+    padding-top: 10px;
+    color: #f4f4f4;
+}
+
+.sidebar .active-item span {
+    color: #00CC99;
+}
+
+a {
+    color: #f4f4f4;
+}

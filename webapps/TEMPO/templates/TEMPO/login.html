@@ -1,0 +1,44 @@
+{% extends "TEMPO/base_generic.html" %}
+{% block title %}
+    <title>Log In</title>
+{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/login.css" %}">
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-7 col-sm-7 col-md-7 offset-md-6">
+                <p class="login-message">Start Your TEMPO Journey</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-7 col-sm-7 col-md-4 offset-md-7">
+                <form class="login-block" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="form-control">
+                        {{ form.username }}
+                    </div>
+
+                    <div class="form-control">
+                        {{ form.password }}
+                    </div>
+
+                    {% if form.errors %}
+                        <div class="error">
+                            Invalid username or password
+                        </div>
+                    {% endif %}
+
+                    <a href="{% url 'forget-password' %}">Forgot password?</a>
+                    <button class="btn btn-lg btn-info btn-block btn-signin" type="submit">Log in</button>
+                    <button class="btn btn-lg btn-info btn-block btn-register" type="button"
+                    onclick="location.href='{% url 'register' %}'">Sign up
+                    </button>
+                    <input type="hidden" name="next" value="{{ next }}"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

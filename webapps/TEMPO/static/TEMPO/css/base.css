@@ -1,0 +1,36 @@
+.my-nav {
+    height: 60px;
+}
+
+.my-navbar {
+    background: url("../images/navbar_background.jpg") fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.my-navbar-brand {
+    color: #00CC99;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: "Chalkboard SE";
+}
+
+.my-nav-item {
+    margin: 10px;
+    color: aliceblue;
+}
+
+.my-nav-active {
+    margin: 10px;
+    color: #00CC99;
+}
+
+.dropdown-btn {
+    color: aliceblue !important;
+}
+
+.dropdown-active {
+    color: #00CC99 !important;
+}

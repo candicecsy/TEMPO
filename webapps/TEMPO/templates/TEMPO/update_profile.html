@@ -1,0 +1,84 @@
+{% extends 'TEMPO/band_base.html' %}
+{% block title %}
+    <title>Update Profile</title>
+{% endblock %}
+{% block band_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/update_profile.css" %}">
+{% endblock %}
+{% block nav-item-home %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}"><span class="my-nav-item">Home</span><span
+                class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item-profile %}
+    <li>
+        <div class="dropdown">
+            <a href="#" class="nav-link dropdown-active dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                <span>Profile</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                {% if request.user.profile.band %}
+                    <a class="dropdown-item" href="{% url 'my-band' %}">My Band</a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+{% endblock %}
+{% block nav-item-user-calendar %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'user-calendar' %}"><span class="my-nav-item">My Calendar</span><span
+                class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item %}
+    <li class="nav-item first-item active-item" onclick="{% url 'profile' %}">
+        <a href="{% url 'profile' %}"><span>My Profile</span></a>
+    </li>
+    {% if band %}
+        <li class="nav-item" onclick="{% url 'my-band' %}">
+            <a class="my-band-link" href="{% url 'my-band' %}"><span>My Band</span></a>
+        </li>
+    {% endif %}
+{% endblock %}
+{% block main %}
+    <main class="col-sm-9 ml-sm-auto col-md-10 pt-3 main" role="main">
+        <div class="row">
+            <div class="col-md-9 offset-md-3 update-profile-box">
+                <form method="post" action="{% url 'update-profile' %}" enctype="multipart/form-data">
+                    <h3>Update My Profile</h3>
+                    <table>
+                        {% for field in user_form.visible_fields %}
+                            <tr>
+                                <td>{{ field.label_tag }}</td>
+                                <td>{{ field }}</td>
+                                <td>{{ field.errors }}</td>
+                            </tr>
+                        {% endfor %}
+                        {% for field in profile_form.visible_fields %}
+                            <tr>
+                                <td>{{ field.label_tag }}</td>
+                                <td>{{ field }}</td>
+                                <td>{{ field.errors }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% for field in user_form.hidden_fields %}
+                        {{ field }}
+                    {% endfor %}
+                    {% for field in profile_form.hidden_fields %}
+                        {{ field }}
+                    {% endfor %}
+                    <br/>
+                    <button class="btn-info btn-profile-save" type="submit" value="Save">Save</button>
+                    <br/>
+                    {% csrf_token %}
+                </form>
+                <button class="btn-danger btn-profile-save" onclick="window.location.href='{% url 'profile' %}'">Cancel</button>
+            </div>
+        </div>
+    </main>
+{% endblock %}

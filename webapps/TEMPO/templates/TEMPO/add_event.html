@@ -1,0 +1,84 @@
+{% extends 'TEMPO/band_base.html' %}
+{% block title %}
+    <title>Add Live Session</title>
+{% endblock %}
+{% block band_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/add_event.css" %}">
+{% endblock %}
+{% block nav-item-home %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}"><span class="my-nav-item">Home</span><span
+                class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item-profile %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'profile' %}"><span class="my-nav-active">Profile</span><span class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item %}
+    <li class="nav-item first-item">
+        <a href="{% url 'my-band' %}">Band Profile</a>
+    </li>
+    <li class="nav-item active-item">
+        <a href="{% url 'live-session' %}"><span>Live Sessions</span></a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'practice-session' %}">Practice Sessions</a>
+    </li>
+    <li class="nav-item">
+        Song Lists
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'band-calendar' %}">Calendar</a>
+    </li>
+{% endblock %}
+{% block main %}
+    <main class="col-sm-9 ml-sm-auto col-md-10 pt-3 main" role="main">
+        <div class="row">
+            <div class="col-md-9 offset-md-3 add-event-box">
+                <p>{{ error }}</p>
+                <form enctype="multipart/form-data" class="form-group edit-block" id="edit-form" method="post"
+                      action="{% url 'add-event' %}">
+                    {% csrf_token %}
+                    <h3>Add a new session</h3>
+                    <table>
+                        {% for field in form.visible_fields %}
+                            <tr>
+                                <td id="firstcol">
+                                    <span>{{ field.label_tag }}</span>
+                                </td>
+                                <td id="secondcol">
+                                    {{ field }}
+                                </td>
+                                <td>
+                                    <div class="fielderror">{{ field.errors }}</div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        {% for field in form.hidden_fields %}
+                            <tr>
+                                <td id="firstcol">
+                                    <span>{{ field.label_tag }}</span>
+                                </td>
+                                <td id="secondcol">
+                                    {{ field }}
+                                </td>
+                                <td>
+                                    <div class="errmessage">{{ field.errors }}</div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+
+                    <button class="btn btn-md btn-info btn-edit" type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="form">
+
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,81 @@
+.my-carousel {
+    position: relative;
+    min-width: 1400px;
+    height: 700px;
+}
+
+.index_box_outer {
+    position: relative;
+    margin: 20px auto 0;
+}
+
+.index_box {
+    margin-top: 20px;
+    position: relative;
+    overflow-y: scroll;
+}
+
+.index_box h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.index_box .line {
+    height: 2px;
+    background: #f4f4f4;
+    margin-top: -2px;
+}
+
+.index_box .content {
+    padding-top: 20px;
+    height: 400px;
+    overflow-x: scroll;
+    position: relative;
+}
+
+.index_box .content .video-list{
+    width: 4500px;
+    position: absolute;
+    overflow: hidden;
+    left: 0px;
+}
+
+.index_box .content .video-list .video-1{
+    width: 400px;
+    position: relative;
+}
+
+.index_box .content .video-list .video-1 img{
+    width: 400px;
+    height: 250px;
+    position: relative;
+}
+
+.index_box .content .video-list .video-1 div {
+    text-align: center;
+}
+
+
+.index_box .content li{
+    float: left;
+    margin: 20px;
+    width: 220px;
+}
+
+.index_box ul {
+    list-style-type: none;
+}
+
+.index_box .video-title {
+    margin-left: 30px;
+    font-weight: 500;
+    color: #00CC99;
+}
+
+.no-event-info {
+    margin-top: 100px;
+    margin-left: 350px;
+    font-weight: bold;
+    color: #00CC99;
+}
+

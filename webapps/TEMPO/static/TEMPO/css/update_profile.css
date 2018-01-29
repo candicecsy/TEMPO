@@ -1,0 +1,27 @@
+body {
+    background: url("../images/create_band_background.jpg") fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.update-profile-box h3{
+    margin-top: 30px;
+    margin-bottom: 60px;
+    margin-left: 100px;
+    color: #00CC99;
+}
+
+.update-profile-box button {
+    margin-left: 80px;
+    width: 90px;
+}
+
+a {
+    color: #00CC99;
+}
+
+.datetime-input {
+    width: 300px;
+}

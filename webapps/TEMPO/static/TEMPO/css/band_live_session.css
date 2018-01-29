@@ -1,0 +1,182 @@
+.add-new-button {
+    float: right;
+    margin-top: 40px;
+    margin-right: 170px;
+    background: transparent;
+    border: hidden;
+}
+
+.active-item a {
+    color: #00CC99;
+}
+
+.live-session-card {
+    width: 700px;
+    height: 300px;
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-bottom: 50px;
+    background-color: #333333;
+}
+
+.live-session-card .end-sign {
+    float: right;
+    margin-top: -120px;
+    width: 50px;
+    height: 50px;
+}
+
+.practice .end-sign {
+    float: right;
+    margin-top: -72px;
+    width: 50px;
+    height: 50px
+}
+
+
+.live-session-card ul {
+    list-style-type: none;
+    margin-left: -38px;
+}
+
+.live-session-card .photo {
+    float:left;
+    width: 400px;
+    height: 300px;
+}
+
+.live-session-card .label {
+    color: #00CC99;
+    font-weight: bold;
+}
+
+.live-session-card .song-list-link {
+    color: #3a87ad;
+}
+
+.live-session-card .text {
+    color: #eeeeee;
+}
+
+.live-session-card button {
+    float: right;
+    margin-top: 150px;
+    background: transparent;
+    border: hidden;
+}
+
+.practice button {
+    float: right;
+    margin-top: 200px;
+    background: transparent;
+    border: hidden;
+}
+
+h2 {
+    margin-top: 100px;
+    color: #00CC99;
+    font-size: 28px;
+    font-family: ".SF NS Display";
+    font-style: italic;
+}
+
+.title  h3 {
+    margin-top: 80px;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Big Caslon";
+    color: #36b4cc;
+}
+
+.title h3 span {
+    font-style: italic;
+}
+
+.line {
+    height: 2px;
+    margin-bottom: 30px;
+    background: #f4f4f4;
+    margin-top: -2px;
+}
+
+#event-song-lists .list-cards ul {
+    width: 1500px;
+}
+
+#event-song-lists .list-cards li {
+    list-style: none;
+    float: left;
+    width: 520px;
+    margin-bottom: 40px;
+    display: block;
+}
+
+#event-song-lists .list-card {
+    text-align: center;
+    background-color: #333333;
+    max-width: 440px;
+    min-height: 420px;
+}
+
+#event-song-lists .list-card .event-title {
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "Arial Rounded MT Bold";
+    color: lightyellow;
+}
+
+#event-song-lists .list-card img {
+    width: 350px;
+    height: 350px;
+}
+
+.song-list-group {
+    margin-top: 150px;
+}
+
+.song-list-group li {
+    width: 80%;
+    border-color: #d7d7d7;
+    background-color: #333333;
+}
+
+.song-list-group li a {
+    color: #bce8f1;
+}
+
+.song-list-group li button {
+    float: right;
+    background: transparent;
+    color: #eeeeee;
+    border: hidden;
+}
+
+#SongPreviewModal .content {
+    width: 600px;
+}
+
+#addNewSongModal .content {
+    background-color: #333333;
+}
+
+#addNewSongModal .modal-header h5 {
+    color: #00CC99;
+}
+
+#addNewSongModal #add-new-song-form table td {
+    padding: 20px;
+    color: #eeeeee;
+}
+
+#addNewSongModal #add-new-song-form table .label {
+    width: 100px;
+}
+
+#addNewSongModal #add-new-song-form table input {
+     max-width: 200px;
+}
+
+.dropdown-active {
+    color: #00CC99 !important;
+}

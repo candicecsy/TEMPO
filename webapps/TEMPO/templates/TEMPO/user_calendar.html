@@ -1,0 +1,90 @@
+{% extends 'TEMPO/base_index.html' %}
+{% block title %}
+    <title>User Calendar</title>
+{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'TEMPO/css/fullcalendar.css' %}">
+    <link rel="stylesheet" href="{% static "TEMPO/css/base.css" %}">
+    <link rel="stylesheet" href="{% static "TEMPO/css/user_home.css" %}">
+    <link rel="stylesheet" href="{% static "TEMPO/css/band_calendar.css" %}">
+{% endblock %}
+{% block nav-item-home %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}"><span class="my-nav-item">Home</span><span
+                class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item-profile %}
+    <li>
+        <div class="dropdown">
+            <a href="#" class="nav-link dropdown-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                <span>Profile</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                {% if request.user.profile.band %}
+                    <a class="dropdown-item" href="{% url 'my-band' %}">My Band</a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+{% endblock %}
+{% block nav-item-user-calendar %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'user-calendar' %}"><span class="my-nav-active">My Calendar</span><span
+                class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="band-calendar-block" id="user-calendar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="userCalendarModal" tabindex="-1" role="dialog" aria-labelledby="userCalendarModal"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userCalendarModalLabel">Event Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1">
+                                <section class="event-info">
+                                    <span class="label">Name:</span><span class="info" id="eventName"></span><br>
+                                    <span class="label">Date:</span><span class="info" id="eventDate"></span><br>
+                                    <span class="label">Location:</span><span class="info" id="eventLocation"></span><br>
+                                </section>
+                                <section class="band-info">
+                                    <span class="label">Band Name:</span><span class="info" id="bandName"></span><br>
+                                    <span class="label">Band Description:</span><span class="info" id="bandDescription"></span><br>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="delete-btn">Delete</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    {% load static %}
+    <script src='{% static 'TEMPO/js/moment.min.js' %}'></script>
+    <script src='{% static 'TEMPO/js/fullcalendar.js' %}'></script>
+    <script src='{% static 'TEMPO/js/band_calendar.js' %}'></script>
+{% endblock %}

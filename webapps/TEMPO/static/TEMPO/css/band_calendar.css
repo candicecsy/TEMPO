@@ -1,0 +1,52 @@
+body {
+    background: url("../images/calendar.jpg") fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.active-item a {
+    color: #00CC99;
+}
+
+.band-calendar-block {
+    margin-top: 50px;
+}
+
+.live-session-color {
+    height: 20px;
+    width: 100px;
+    background-color: #00CC99;
+}
+
+.practice-session-color {
+    height: 20px;
+    width: 100px;
+    background-color: #bce8f1;
+}
+
+#userCalendarModal div {
+    border-color: #666666;
+}
+
+#userCalendarModal .content {
+    background-color: #333333;
+}
+
+#userCalendarModal .modal-title {
+    color: #00CC99;
+}
+
+#userCalendarModal .label {
+    margin-right: 20px;
+    color: #00CC99;
+}
+
+#userCalendarModal .info {
+    color: #d7d7d7;
+}
+
+.dropdown-active {
+    color: #00CC99 !important;
+}

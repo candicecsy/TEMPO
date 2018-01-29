@@ -1,0 +1,51 @@
+{% extends 'TEMPO/band_base.html' %}
+{% block title %}
+    <title>Band Calendar</title>
+{% endblock %}
+{% block band_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'TEMPO/css/fullcalendar.css' %}">
+    <link rel="stylesheet" href="{% static 'TEMPO/css/band_calendar.css' %}">
+{% endblock %}
+{% block nav-item %}
+    <li class="nav-item first-item">
+        <a href="{% url 'my-band' %}"><span>Band Profile</span></a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'live-session' %}">Live Sessions</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'practice-session' %}">Practice Sessions</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'song-list' %}">Song Lists</a>
+    </li>
+    <li class="nav-item active-item">
+        <a href="{% url 'band-calendar' %}">Calendar</a>
+    </li>
+{% endblock %}
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-2">
+                <div>
+                    Live Session
+                    <div class="live-session-color"></div>
+                </div>
+                <br>
+                <div>
+                    Practice Session
+                    <div class="practice-session-color"></div>
+                </div>
+                <div class="band-calendar-block" id="calendar"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    {% load static %}
+    <script src='{% static 'TEMPO/js/jquery.min.js' %}'></script>
+    <script src='{% static 'TEMPO/js/moment.min.js' %}'></script>
+    <script src='{% static 'TEMPO/js/fullcalendar.js' %}'></script>
+    <script src='{% static 'TEMPO/js/band_calendar.js' %}'></script>
+{% endblock %}

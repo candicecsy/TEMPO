@@ -1,0 +1,25 @@
+.label {
+    color: #00CC99;
+    text-decoration: underline;
+    margin-right: 15px;
+}
+
+.event-info {
+    width: 60%;
+}
+
+.band-info {
+    float: right;
+    margin-top: -180px;
+    width: 40%;
+}
+
+img {
+    margin-bottom: 20px;
+}
+
+.calendar-button {
+    margin-bottom: 40px;
+    background: transparent;
+    border: hidden;
+}

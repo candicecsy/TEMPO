@@ -1,0 +1,66 @@
+{% extends 'TEMPO/base_index.html' %}
+{% block title %}
+    <title>Event Information</title>
+{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/base.css" %}">
+    <link rel="stylesheet" href="{% static "TEMPO/css/upcoming_event.css" %}">
+{% endblock %}
+{% block nav-item-home %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}"><span class="my-nav-item">Home</span><span
+                class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item-profile %}
+    <li>
+        <div class="dropdown">
+            <a href="#" class="nav-link dropdown-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                <span>Profile</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                {% if request.user.profile.band %}
+                    <a class="dropdown-item" href="{% url 'my-band' %}">My Band</a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+{% endblock %}
+{% block nav-item-user-calendar %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'user-calendar' %}"><span class="my-nav-item">My Calendar</span><span class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <img class="img-fluid" src="{% url 'event-photo' event.id %}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <section class="event-info">
+                    <button id="calendar-button" class="calendar-button"><i
+                            class="fa fa-calendar-plus-o" aria-hidden="true">&nbspAdd
+                        to calendar</i></button>
+                    <p><span class="label">Name:</span>{{ event.name }}</p>
+                    <p><span class="label">Date:</span>{{ event.date_time }}</p>
+                    <p><span class="label">Location:</span>{{ event.location }}</p>
+                </section>
+                <section class="band-info">
+                    <img class="img-fluid" src="{% url 'band-photo' event.band.band_name %}">
+                    <p><span class="label">Band Name:</span>{{ event.band.band_name }}</p>
+                    <p><span class="label">Description:</span><br>{{ event.band.band_description }}</p>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascript %}
+    {% load static %}
+    <script src="{% static 'TEMPO/js/addEvent.js' %}"></script>
+{% endblock %}

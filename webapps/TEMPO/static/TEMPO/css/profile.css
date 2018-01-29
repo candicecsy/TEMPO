@@ -1,0 +1,136 @@
+.my-band-link {
+    color: #eeeeee;
+}
+
+.edit-profile a {
+    color: #333333;
+}
+
+.profile-photo {
+    width: 40%;
+    margin-top: 30px;
+    margin-left: 80px;
+}
+
+.profile-info {
+    width: 40%;
+    float: right;
+    margin-top: -200px;
+}
+
+.profile-info span {
+    margin-right: 10px;
+    color: #00CC99;
+    text-decoration: underline;
+}
+
+.profile-info .add-band-user {
+    margin-top: -45px;
+    margin-left: -65px;
+    color: cadetblue;
+}
+
+.profile-info .add-band-user a {
+    color: cadetblue;
+}
+
+.profile-info .delete-band-user {
+    margin-top: -28px;
+    margin-left: -110px;
+    color: cadetblue;
+}
+
+.profile-info .delete-band-user a {
+    color: cadetblue;
+}
+
+li {
+    list-style-type: none;
+}
+
+.biography {
+    margin-left: 80px;
+    margin-top: 100px;
+}
+
+.biography h4 {
+    font-weight: bold;
+    color: #00CC99;
+}
+
+.biography .line {
+    height: 2px;
+    background: #f4f4f4;
+    margin-top: -2px;
+}
+
+.biography p {
+    font-style: italic;
+}
+
+.create-band {
+    margin-top: 60px;
+    margin-left: 280px;
+}
+
+.create-band a {
+    color: #00CC99;
+}
+
+i {
+    margin-top: 10px;
+    margin-left: 150px;
+}
+
+.profile-photo img {
+    width: 80%;
+    height: 250px;
+}
+
+.band-photo {
+    margin-top: 60px;
+}
+
+.band-photo img {
+    width: 100%;
+    height: 300px;
+}
+
+.band-profile i {
+    margin-top: 10px;
+    margin-left: 200px;
+}
+
+.band-profile a {
+    color: #333333;
+}
+
+.band-profile .profile-info {
+    margin-top: -300px;
+}
+
+.update-band-profile-btn {
+    width: 300px;
+    margin-top: 30px;
+}
+
+#addBandUserModal div {
+    border-color: #666666;
+}
+
+#addBandUserModal .content {
+    background-color: #333333;
+}
+
+#addBandUserModal .modal-title {
+    color: #00CC99;
+}
+
+#addBandUserModal table td {
+    padding-right: 20px;
+    color: #f2f2f2;
+}
+
+.dropdown-active {
+    color: #00CC99 !important;
+}

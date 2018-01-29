@@ -1,0 +1,29 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: url("../images/login_background.jpg") fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.login-block {
+    margin-top: 100px;
+    margin-left: 30px;
+}
+
+.login-message {
+    margin-left: 90px;
+    margin-top: 80px;
+    color: #36b4cc;
+    font-size:35px;
+    font-weight: bold;
+    font-family: fantasy;
+}
+
+.error {
+    color: crimson;
+    font-weight: bold;
+    font-family: fantasy;
+}

@@ -1,0 +1,51 @@
+body {
+    background: url("../images/create_band_background.jpg") fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.add-event-box h3{
+    margin-top: 30px;
+    margin-bottom: 60px;
+    margin-left: 100px;
+    color: #00CC99;
+}
+
+.add-event-box table {
+    margin-top: -50px;
+    margin-left: 10px;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.add-event-box td {
+    padding-right: 20px;
+}
+
+.add-event-box button {
+    margin-left: 180px;
+}
+
+.add-practice-box h3{
+    margin-top: 30px;
+    margin-bottom: 60px;
+    margin-left: 30px;
+    color: #00CC99;
+}
+
+.add-practice-box table {
+    margin-left: 10px;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+.add-practice-box td {
+    padding-right: 20px;
+}
+
+.add-practice-box button {
+    margin-top: 20px;
+    margin-left: 150px;
+}

@@ -1,0 +1,33 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background: url("../images/register_background.jpg") fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.form-field {
+    margin: 10px;
+}
+
+button {
+    margin-left: 9px;
+}
+
+.register-block {
+    margin-top: 25px;
+}
+
+.reset-block {
+    margin-top: 120px;
+}
+
+.errmessage {
+    margin-left: 10px;
+    color: crimson;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: fantasy;
+}

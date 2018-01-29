@@ -1,0 +1,43 @@
+{% extends "TEMPO/base_generic.html" %}
+{% block title %}
+    <title>Log In</title>
+{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/base.css" %}">
+{% endblock %}
+{% block navbar %}
+    <div class="my-nav">
+        <nav class="navbar navbar-expand-md navbar-light fixed-top my-navbar">
+            <div class="navbar-header">
+                <a href="/TEMPO/">
+                    <span class="my-navbar-brand">TEMPO</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav navbar-right">
+                    {% block nav-item-home %}
+                    {% endblock %}
+                    {% block nav-item-profile %}
+                    {% endblock %}
+                    {% block nav-item-user-calendar %}
+                    {% endblock %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}"><span class="my-nav-item">Log out</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+{% endblock %}
+{% block footer %}
+    <!--<div class="footer fixed-bottom">
+        <h5>About us</h5>
+    </div>-->
+{% endblock %}

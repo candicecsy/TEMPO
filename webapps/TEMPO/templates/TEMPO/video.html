@@ -1,0 +1,112 @@
+{% extends 'TEMPO/base_index.html' %}
+{% block title %}
+    <title>Video streaming</title>
+{% endblock %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/base.css" %}">
+    <link rel="stylesheet" href="{% static "TEMPO/css/video.css" %}">
+{% endblock %}
+{% block nav-item-home %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}"><span class="my-nav-item">Home</span><span
+                class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block nav-item-profile %}
+    <li>
+        <div class="dropdown">
+            <a href="#" class="nav-link dropdown-btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                <span>Profile</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                {% if request.user.profile.band %}
+                    <a class="dropdown-item" href="{% url 'my-band' %}">My Band</a>
+                {% endif %}
+            </div>
+        </div>
+    </li>
+{% endblock %}
+{% block nav-item-user-calendar %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'user-calendar' %}"><span class="my-nav-item">My Calendar</span><span
+                class="sr-only">(current)</span></a>
+    </li>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-8 video-div">
+            <div id="vid-box"></div>
+            <div class="live-session-card">
+                <ul>
+                    <li><img class="photo" src="{% url 'event-photo' event.id %}"></li>
+                    <li>
+                        <ul>
+                            <li><span class="label">Name:&nbsp&nbsp</span><span class="text">{{ event.name }}</span>
+                            </li>
+                            <li><span class="label">Room ID:&nbsp&nbsp</span><span id='event_id'
+                                                                                   class="text">{{ event.id }}</span>
+                            </li>
+                            <li><span class="label">Band Name:&nbsp&nbsp</span><span class="text"
+                                                                                     id="bandName">{{ band.band_name }}</span>
+                            </li>
+                            <li><span class="label">Date & Time:&nbsp&nbsp</span><span
+                                    class="text">{{ event.date_time }}</span></li>
+                            <li><span class="label">Location:&nbsp&nbsp</span><span
+                                    class="text">{{ event.location }}</span></li>
+                            <br>
+                            {% if is_starter == 'F' %}
+                                <li>
+                                    <button id='back'><i class="fa fa-angle-double-left text" aria-hidden="true">&nbspBack
+                                        to Live Session</i></button>
+                                </li>
+                            {% endif %}
+                            {% if not event.is_end and is_starter == 'T' %}
+                                <li>
+                                    <button onclick="end()"><i class="fa fa-stop-circle text"
+                                                               aria-hidden="true">&nbspStop</i></button>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4 chat-box">
+            <div id="message-list">
+                <ul></ul>
+            </div>
+            <div class="user-info">
+                {% if not user.profile.picture %}
+                    {% load static %}
+                    <img class="rounded-circle" src="{% static 'TEMPO/images/default_profile_photo.jpg' %}">
+                {% else %}
+                    <img class="rounded-circle" src="{% url 'user-photo' user.id %}">
+                {% endif %}
+                <span id='username' class="label">{{ user.username }}</span>
+                {% if is_starter == 'T' %}
+                    <div id='is_starter' class="text">Broadcaster</div>
+                {% else %}
+                    <div id='is_starter' class="text">Guest</div>
+                {% endif %}
+            </div>
+            <div class="video-bullet-form">
+                <form>
+                    <input type="text" id="inputbox" required />
+                    <button type="submit" id="inputbtn"><i class="fa fa-paper-plane" aira-hidden="true"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascript %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdn.pubnub.com/pubnub-3.7.14.min.js"></script>
+    <script src="https://cdn.pubnub.com/webrtc/webrtc.js"></script>
+    <script src="https://cdn.pubnub.com/webrtc/rtc-controller.js"></script>
+    {% load static %}
+    <script src="{% static 'TEMPO/js/video.js' %}"></script>
+{% endblock %}

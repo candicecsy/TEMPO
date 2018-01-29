@@ -1,0 +1,87 @@
+{% extends 'TEMPO/band_base.html' %}
+{% block title %}
+    <title>Band Practice Session</title>
+{% endblock %}
+{% block band_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/band_live_session.css" %}">
+{% endblock %}
+{% block nav-item %}
+    <li class="nav-item first-item">
+        <a href="{% url 'my-band' %}">Band Profile</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'live-session' %}">Live Sessions</a>
+    </li>
+    <li class="nav-item active-item">
+        <a href="{% url 'practice-session' %}"><span>Practice Sessions</span></a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'song-list' %}">Song Lists</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'band-calendar' %}">Calendar</a>
+    </li>
+{% endblock %}
+{% block main %}
+    <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+        <div class="row">
+            <div class="col-md-6 offset-md-5">
+                <button class="add-new-button" onclick="location.href='{% url 'add-practice-session' %}'"><i
+                        class="fa fa-plus-square"
+                        aria-hidden="true">&nbspAdd
+                    new practice session</i></button>
+            </div>
+            <div class="col-md-8 offset-md-2">
+                <span hidden="hidden" id="bandname">{{ band.band_name }}</span>
+                {% if not practice_session %}
+                    <h2>There hasn't been any practice session yet.</h2>
+                {% endif %}
+                {% for session in practice_session %}
+                    <div class="live-session-card practice">
+                        <ul>
+                            <li><img class="photo" src="{% url 'band-photo' band.band_name %}"></li>
+                            <li>
+                                <ul>
+                                    <li><span class="label">Name:&nbsp&nbsp</span><span
+                                            class="text">{{ session.name }}</span>
+                                    </li>
+                                    <li><span class="label">Date & Time:&nbsp&nbsp</span><span
+                                            class="text">{{ session.date_time }}</span></li>
+                                    <br>
+                                </ul>
+                            </li>
+                            {% if session.is_end %}
+                                <li>
+                                    {% load static %}
+                                    <img class="end-sign" src="{% static 'TEMPO/images/end_sign.jpg' %}">
+                                </li>
+                            {% endif %}
+                            {% if not session.is_live %}
+                                <li>
+                                    <button onclick="delete_practice({{ session.id }})"><i
+                                            class="fa fa-window-close text" aria-hidden="true">&nbspDelete</i></button>
+                                </li>
+                            {% endif %}
+                            {% if not session.is_end and not session.is_live %}
+                                <li>
+                                    <button onclick="location.href='{% url 'start-practice' session.id %}'"><i
+                                            class="fa fa-youtube-play text" aria-hidden="true">&nbspStart</i></button>
+                                </li>
+                            {% elif not session.is_end and session.is_live %}
+                                <li>
+                                    <button onclick="location.href='{% url 'join-practice' session.id %}'"><i
+                                            class="fa fa-youtube-play text" aria-hidden="true">&nbspJoin</i></button>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% endblock %}
+{% block javascript %}
+    {% load static %}
+    <script src='{% static 'TEMPO/js/band_practice_session.js' %}'></script>
+{% endblock %}

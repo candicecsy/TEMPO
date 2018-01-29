@@ -1,0 +1,68 @@
+{% extends 'TEMPO/band_base.html' %}
+{% block title %}
+    <title>User Profile</title>
+{% endblock %}
+{% block band_css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "TEMPO/css/profile.css" %}">
+{% endblock %}
+{% block nav-item %}
+    <li class="nav-item first-item active-item" onclick="{% url 'profile' %}">
+        <a href="{% url 'profile' %}"><span>My Profile</span></a>
+    </li>
+    {% if band %}
+        <li class="nav-item" onclick="{% url 'my-band' %}">
+            <a class="my-band-link" href="{% url 'my-band' %}"><span>My Band</span></a>
+        </li>
+    {% endif %}
+{% endblock %}
+{% block main %}
+    <div class="container">
+            <div class="col-md-10 offset-md-1">
+                <section class="profile-photo">
+                    {% if not user.profile.picture %}
+                        {% load static %}
+                        <div>
+                            <img class="rounded-circle" src="{% static 'TEMPO/images/default_profile_photo.jpg' %}">
+                        </div>
+                    {% else %}
+                        <div>
+                            <img class="rounded-circle" src="{% url 'user-photo' user.id %}">
+                        </div>
+                    {% endif %}
+                </section>
+                <div class="edit-profile">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"><a href="{% url 'update-profile' %}">&nbspEdit
+                    Profile</a></i>
+                </div>
+                <section class="profile-info">
+                    <ul>
+                        <li><p><span>Username: </span>{{ user.username }}</p></li>
+                        <li><p><span>First Name: </span>{{ user.first_name }}</p></li>
+                        <li><p><span>Last Name: </span>{{ user.last_name }}</p></li>
+                        <li><p><span>Email: </span>{{ user.email }}</p></li>
+                        <li><p><span>Birthday: </span>{{ user.profile.birthday }}</p></li>
+                        <li><p><span>Age: </span>{{ user.profile.age }}</p></li>
+                        <li><p><span>Location: </span>{{ user.profile.location }}</p></li>
+                    </ul>
+                </section>
+                <section class="biography">
+                    <h4>Biography</h4>
+                    <div class="line"></div>
+                    <p>
+                        {% if user.profile.bio %}
+                            {{ user.profile.bio }}
+                        {% else %}
+                            You still have no biography now!
+                        {% endif %}
+                    </p>
+                </section>
+                {% if not band %}
+                    <p class="create-band">Are you interested in <a href="{% url 'create-band' %}">creating your
+                        band</a>&nbsp?</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
